@@ -49,7 +49,7 @@ for (var i = 0; i < classe_14.length; i++) {
 }
 var nuovo_nome = prompt('inserisci un nome');
 var nuovo_cognome = prompt('inserisci un cognome');
-var nuovo_eta = parseInt(prompt('inseriscil\'eta'));
+var nuovo_eta = parseInt(prompt('inserisci l\'eta'));
 studente.nome = nuovo_nome;
 var nome = studente.nome;
 studente.cognome = nuovo_cognome;
@@ -57,5 +57,11 @@ var cognome = studente.cognome;
 studente.eta = nuovo_eta;
 var eta = studente.eta;
 classe_14.push({nome, cognome, eta});
-
 console.log(classe_14);
+
+var source = document.getElementById("students-template").innerHTML;
+var template = Handlebars.compile(source);
+
+var context = { name: nome, surname: cognome, age: eta };
+var html = template(context);
+$('.container').append(html);
